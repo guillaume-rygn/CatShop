@@ -1,0 +1,81 @@
+.card {
+    border: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.card:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--quad);
+    transform: scaleY(1);
+    transition: all 0.5s;
+    transform-origin: bottom
+}
+
+.card:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--prim);
+    transform: scaleY(0);
+    transition: all 0.5s;
+    transform-origin: bottom
+}
+
+.card:hover::after {
+    transform: scaleY(1)
+}
+
+.fonts {
+    font-size: 11px
+}
+
+.social-list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 0
+}
+
+.social-list li {
+    padding: 10px;
+    color: var(--prim);
+    font-size: 19px
+}
+
+.buttons a:nth-child(1) {
+    border: 1px solid var(--second)!important;
+    color: var(--prim)!important;
+    height: 40px
+}
+
+.buttons a:nth-child(1):hover {
+    border: 1px solid var(--second) !important;
+    color: #fff!important;
+    height: 40px;
+    background-color: #E26D5C
+}
+
+.buttons a:nth-child(2) {
+    border: 1px solid var(--second) !important;
+    background-color: var(--second)!important;
+    color: var(--prim)!important;
+    height: 40px
+}
+
+.buttons a:nth-child(2):hover {
+    border: 1px solid var(--second) !important;
+    background-color: #E26D5C!important;
+    color: #fff!important;
+    height: 40px
+}
