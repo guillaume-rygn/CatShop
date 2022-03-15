@@ -8,4 +8,11 @@ class User < ApplicationRecord
   has_one :cart
   has_many :orders
   #should we add email confirmation and a password confirmation?
+
+  after_create :cartcreate
+
+  def cartcreate
+    Cart.create(user_id: self.id)
+  end
+  
 end

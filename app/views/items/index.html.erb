@@ -1,157 +1,36 @@
+ <div class="banner">
+  <div class="hero-text">
+    <h1 style="font-weight: 700;">CatShop</h1>
+    <h5>CatPic for your Grandma</h5>
+  </div>
+ </div>
+ 
+ <br/>
+ <h1 class="row justify-content-center" style="font-weight:600" >All Cats</h1>
+ <br/>
+ <div class="container">
+  <div class="row justify-content-center">
 
-
-
-  
-   
-
-    <div class="banner">
-      <div class="hero-text">
-        <h1 style="font-weight: 700;">CatShop</h1>
-        <h5>CatPic for your Grandma</h5>
-      </div>
-    </div>
-    <br/>
-    <h1 class="row justify-content-center" style="font-weight:600" >TopCats</h1>
-    <br/>
-    <div class="container">
-      <div class="row justify-content-center">
-
+    <%@items.each do |item|%>
         <div class="col-12 col-lg-3 col-md-6 mb-3">
           <div class="card-sl">
             <div class="card-image">
-              <img
-                src="https://www.woopets.fr/assets/races/000/348/bannerbig2021/british-shorthair_2.jpg"
-              >
+              <%=image_tag (item.image_url)%>
             </div>
 
-            <div class="card-heading text-center">British ShortHair</div>
+            <div class="card-heading text-center"><%=item.title%></div>
             <div class="card-text text-center">
-              The ancestors of the British Shorthair were cats who had adapted
-              to the harsh weather of the British Isles, in particular by
-              developing a coat dense enough to protect them from the weather
-              and the cold.
+              <%=item.description%>
             </div>
             <div class="card-text text-center">
-              $60
-              <div class="row justify-content-center">
-              <button type="button" class="btn btn-card ">
-              
-                Read more
-              </button>
-              <button type="button" class="btn btn-cart ">
-              
-                Add to cart
-              </button>
+             <%=item.price%>€
+              <div class="row justify-content-center mt-3">
+                <a href="<%=item_path(item.id)%>" class="btn btn-cart col-4 mx-2">Read more</a>
+                <%= button_to "Add to cart", cart_index_path, params: {item_id: item.id, quantity: 1}, method: :post, class: "btn btn-card"%><br>
               </div>
             </div>
           </div>
         </div>
-
-
-        <div class="col-12 col-lg-3 col-md-6 mb-3">
-          <div class="card-sl">
-            <div class="card-image">
-              <img
-                src="https://www.woopets.fr/assets/races/000/348/bannerbig2021/british-shorthair_2.jpg"
-              />
-            </div>
-
-            <div class="card-heading text-center">British ShortHair</div>
-            <div class="card-text text-center">
-              The ancestors of the British Shorthair were cats who had adapted
-              to the harsh weather of the British Isles, in particular by
-              developing a coat dense enough to protect them from the weather
-              and the cold.
-            </div>
-            <div class="card-text text-center">
-              $60
-              <div class="row justify-content-center">
-                <button type="button" class="btn btn-card ">
-                
-                  Read more
-                </button>
-                <button type="button" class="btn btn-cart ">
-                
-                  Add to cart
-                </button>
-                </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-12 col-lg-3 col-md-6 mb-3">
-          <div class="card-sl">
-            <div class="card-image">
-              <img
-                src="https://www.woopets.fr/assets/races/000/348/bannerbig2021/british-shorthair_2.jpg"
-              >
-            </div>
-
-            <div class="card-heading text-center">British ShortHair</div>
-            <div class="card-text text-center">
-              The ancestors of the British Shorthair were cats who had adapted
-              to the harsh weather of the British Isles, in particular by
-              developing a coat dense enough to protect them from the weather
-              and the cold.
-            </div>
-            <div class="card-text text-center">
-              $60
-              <div class="row justify-content-center">
-                <button type="button" class="btn btn-card ">
-                
-                  Read more
-                </button>
-                <button type="button" class="btn btn-cart ">
-                
-                  Add to cart
-                </button>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr>
-
-    <h1 class="row justify-content-center" style="font-weight:600" >AllCats</h1>
-    <br/>
-    <div class="container">
-      <div class="row justify-content-center">
-
-
-        <div class="col-12 col-lg-3 col-md-6 mb-3">
-          <div class="card-sl">
-            <div class="card-image">
-              <img
-                src="https://www.woopets.fr/assets/races/000/348/bannerbig2021/british-shorthair_2.jpg"
-              >
-            </div>
-
-            <div class="card-heading text-center">British ShortHair</div>
-            <div class="card-text text-center">
-              The ancestors of the British Shorthair were cats who had adapted
-              to the harsh weather of the British Isles, in particular by
-              developing a coat dense enough to protect them from the weather
-              and the cold.
-            </div>
-            <div class="card-text text-center">
-              $60
-              <div class="row justify-content-center">
-                <button type="button" class="btn btn-card ">
-                
-                  Read more
-                </button>
-                <button type="button" class="btn btn-cart ">
-                
-                  Add to cart
-                </button>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%end%>
   </div>
-
-
+ </div>

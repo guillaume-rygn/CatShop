@@ -1,25 +1,27 @@
 class CartController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user
 
     def create
-    @cart = JoinTableCartItem.new(cart_params)
+    @cartitem = JoinTableCartItem.new(
+      'item_id' => params[:item_id],
+      'quantity' => params[:quantity],
+      'cart_id' => current_user.id
+    )
 
-    if @cart.save
-      redirect_to root_path
-      flash[:notice] = "add to cart"
+    if @cartitem.save
+      flash[:notice] = "Item Add"
     else
-      redirect_to root_path
-      flash[:notice] = "Please try again"
+      flash[:notice] = "please try again"
     end
-
+  
     respond_to do |format|
-        format.html { redirect_to root_path }
+        format.html { redirect_to cart_path(Cart.find_by(user_id: current_user.id).id) }
         #format.js { }
       end
   end
 
   def show
-    @cart = JoinTableCartItem.find(Cart.find_by(user_id: params[:id]).id)
+    @cart = Cart.find_by(user_id: params[:user_id])
     
   end
 
@@ -33,8 +35,12 @@ class CartController < ApplicationController
 
   private
 
-  def cart_params
-    params.permit(:item_id, :quantity, :cart_id)
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_user_session_path
+    end
   end
+
 
 end

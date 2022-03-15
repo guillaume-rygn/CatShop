@@ -1,52 +1,75 @@
+<header class="p-3 bg-nav ">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
-  <header class="p-3 bg-nav ">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="text-center mb-md-2 mb-sm-2 col-md-12 col-sm-12 col-lg-1">
+        <img src="https://cdn-icons.flaticon.com/png/512/2475/premium/2475265.png?token=exp=1647342221~hmac=7f7cb173c689fbb98e7ad31cae02b290" alt=""  width="50" height="50" >
+      </a>
+<!--
+      <form class="col-12 col-lg-auto  mb-lg-0 mb-md-2 mb-xs-0" id="searchbar">
+        <input type="search" class="form-control searchbar " placeholder="Search..." aria-label="Search">
+      </form>
+-->
 
-        <a href="#" class="text-center mb-md-2 mb-sm-2 col-md-12 col-sm-12 col-lg-1">
-            <img src="https://cdn-icons.flaticon.com/png/512/2475/premium/2475265.png?token=exp=1647342221~hmac=7f7cb173c689fbb98e7ad31cae02b290" alt=""  width="50" height="50" >
-        </a>
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li> <%= link_to "Home", root_path , class:"btn btn-nav me-2"%></li>
+      </ul>
 
-        <form class="col-12 col-lg-auto  mb-lg-0 mb-md-2 mb-xs-0" id="searchbar">
-            <input type="search" class="form-control searchbar " placeholder="Search..." aria-label="Search">
-          </form>
-          
+      <div class="text-end">
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li></li>
-        </ul>
+        <%  if user_signed_in? %>
 
-        <div class="text-end">
-            <a href="#" class="btn btn-nav me-2">Cat 1 </a>
-            <a href="#" class="btn btn-nav me-2">Cat 2 </a>
-            <a href="#" class="btn btn-nav me-2"><img class="logocart" src="https://cdn-icons.flaticon.com/png/512/3002/premium/3002240.png?token=exp=1647342266~hmac=3efc55ddbe98e98e6a389ad2acd692f0" alt="" width="30" height="30"></a>
-          <button  class="btn btn-signup">Sign-up</button>
-        </div>
+        <% if Cart.find_by(user_session) %> <!-- user_id.params[:user_id] -->
+
+        <%= link_to "My cart", root_path , class:"btn btn-nav me-2"%> <!-- un path aller à un panier vide _empty_cart.html.erb -->
+        <%= link_to "My order", root_path , class:"btn btn-nav me-2"%> <!-- un path  aller à un order vide _empty_order.html.erb-->
+
+        <% else %>
+
+        <%= link_to "My cart", root_path , class:"btn btn-nav me-2"%> <!-- cart_path(cart.id) -->
+        <%= link_to "My order", root_path  , class:"btn btn-nav me-2"%> <!-- order_path(order.id)-->
+
+        <% end %>
+
+        <%= link_to "My profil", edit_user_registration_path , class:"btn btn-nav me-2"%> <!-- cart_path -->
+        <a href="<%= root_path %>" class="btn btn-nav me-2"><img class="logocart" src="https://cdn-icons.flaticon.com/png/512/3002/premium/3002240.png?token=exp=1647342266~hmac=3efc55ddbe98e98e6a389ad2acd692f0" alt="" width="30" height="30"></a>  <!-- cart_path(cart.id) -->
+        <%= link_to "Log-out", destroy_user_session_path , method: :delete, class:"btn btn-signup"%>
+
+        <% else %>
+
+        <%= link_to "Log-in", new_user_session_path , class:"btn btn-nav me-2"%>
+        <%= link_to "Sign-up", new_user_registration_path , class:"btn btn-signup"%>
+
+        <% end %>
       </div>
     </div>
-  </header>
-  <header class="p-3 bg-nav ">
-    <div class="container">
-            <div class="d-flex flex-wrap justify-content-center">
-                    <div class="nav2">
-                              <div class="">
-                                
-                                      <ul class="nav col-12 col-lg-12 me-lg-2 mb-2 mb-md-0 mt-2">
-                                        <li>
-                                          <button type="button" class="btn btn-nav me-4">trie 1 </button>
-                                        </li>
-                                        <li>
-                                          <button type="button" class="btn btn-nav me-4">trie 1</button>
-                                        </li>
-                                        <li>
-                                          <button type="button" class="btn btn-nav me-4">trie 1</button>
-                                        </li>
-                                        <li>
-                                          <button type="button" class="btn btn-nav me-4">trie 1</button>
-                                        </li>
-                                      </ul>
-                              </div>
-                    </div>
-            </div>
-    </div>
-  </header>
+  </div>
+</header>
+
+<!--
+<header class="p-3 bg-nav ">
+<div class="container">
+<div class="d-flex flex-wrap justify-content-center">
+<div class="nav2">
+<div class="">
+
+<ul class="nav col-12 col-lg-12 me-lg-2 mb-2 mb-md-0 mt-2">
+<li>
+<button type="button" class="btn btn-nav me-4">Trie 1 </button>
+</li>
+<li>
+<button type="button" class="btn btn-nav me-4">trie 1</button>
+</li>
+<li>
+<button type="button" class="btn btn-nav me-4">trie 1</button>
+</li>
+<li>
+<button type="button" class="btn btn-nav me-4">trie 1</button>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</header>
+-->
