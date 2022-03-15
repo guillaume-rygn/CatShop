@@ -18,8 +18,8 @@ JoinTableItemOrder.destroy_all
   );
 end
 
-#Create 10 items
-10.times do 
+#Create 20 items
+20.times do
   item = Item.create(
     title: Faker::Creature::Cat.name,
     description: Faker::Creature::Cat.breed,
@@ -29,14 +29,14 @@ end
 end
 
 #Create 5 carts
-5.times do 
+5.times do
   cart = Cart.create(
     user_id: User.all.sample.id
   );
 end
 
 #Create 5 orders
-5.times do 
+5.times do
   order = Order.create(
     user_id: User.all.sample.id
   );
@@ -57,6 +57,3 @@ end
     order_id: Order.all.sample.id
   );
 end
-
-
-
