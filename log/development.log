@@ -12003,3 +12003,23 @@ Processing by CartController#show as HTML
 Completed 200 OK in 40ms (Views: 34.7ms | ActiveRecord: 2.3ms)
 
 
+Started GET "/" for 127.0.0.1 at 2022-03-15 22:44:49 +0100
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/alegarn/.rvm/gems/ruby-2.7.4/gems/activerecord-5.2.7/lib/active_record/log_subscriber.rb:98
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:14
+  Rendered items/index.html.erb within layouts/application (27.0ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:21
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:23
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:23
+  Rendered layouts/_navbar.html.erb (64.0ms)
+  Rendered layouts/_flash.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 412ms (Views: 379.4ms | ActiveRecord: 24.3ms)
+
+
