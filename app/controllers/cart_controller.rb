@@ -5,7 +5,7 @@ class CartController < ApplicationController
     @cartitem = JoinTableCartItem.new(
       'item_id' => params[:item_id],
       'quantity' => params[:quantity],
-      'cart_id' => current_user.id
+      'cart_id' => Cart.find_by(user_id: current_user.id).id
     )
 
     if @cartitem.save
@@ -21,7 +21,10 @@ class CartController < ApplicationController
   end
 
   def show
-    @cart = Cart.find_by(user_id: params[:user_id])
+    puts "$"*650
+    puts params.inspect
+    @cart = Cart.find(params[:id])
+    @item = Item.find(1)
     
   end
 
