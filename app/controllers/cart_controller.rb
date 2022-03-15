@@ -5,21 +5,20 @@ class CartController < ApplicationController
     @cart = JoinTableCartItem.new(cart_params)
 
     if @cart.save
-      redirect_to root_path
       flash[:notice] = "add to cart"
     else
-      redirect_to root_path
       flash[:notice] = "Please try again"
     end
-
+    puts"$"*650
+    puts params.inspect
     respond_to do |format|
-        format.html { redirect_to root_path }
+        format.html { redirect_to cart_path(params[:cart_id]) }
         #format.js { }
       end
   end
 
   def show
-    @cart = JoinTableCartItem.find(Cart.find_by(user_id: params[:id]).id)
+    @cart = Cart.find(params[:id])
     
   end
 
