@@ -46,7 +46,7 @@ end
 5.times do
   join_table_cart_items = JoinTableCartItem.create(
     item_id: Item.all.sample.id,
-    cart_id: Cart.all.sample.id,
+    cart_id: Cart.all.sample.id
   );
 end
 

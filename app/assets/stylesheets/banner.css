@@ -1,0 +1,31 @@
+ 
+ 
+ /* BANNER  */
+
+
+
+  .banner {
+
+    height: 562px;
+    background:linear-gradient( rgba(107, 105, 105, 0.5),rgba(107, 105, 105, 0.5),rgba(107, 105, 105, 0.5),var(--second)), url("https://img3.wallspic.com/originals/7/7/0/6/4/146077-chaton_tigre_brun_sur_table_en_bois_marron-3840x2160.jpg");
+
+    background-repeat: no-repeat;
+
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+
+  }
+
+.hero-text {
+    text-align:justify;
+    position: absolute;
+
+    top: 40%;
+    left: 3%;
+    transform: translate(50%, -50%);
+
+    color:#fff;
+  }

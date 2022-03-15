@@ -12,4 +12,22 @@
  *
  *= require_tree .
  *= require_self
+ *= require_body.css
+ *= require_navbar.css
+ *= require_footer.css
  */
+
+ :root {
+
+    --prim : #f14951 ;
+    --second : #fccbab;
+    --tert : #fb6c74;
+    --quad : #f4bc9b;
+    --rp : #f89281;
+    --rpf : #f58474;
+    --mr : #f6a68a;
+    --bg : #fbab94;
+    --brf : #fcb499;
+ 
+  }
+

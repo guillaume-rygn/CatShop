@@ -1,0 +1,17 @@
+/* = require_self */
+ 
+ /* Footer */
+ .bd-footer {
+    background:linear-gradient(var(--prim),var(--prim))!important;
+    text-align: center!important;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif!important;
+    color: var(--second)!important;
+    padding-bottom: 0!important;
+}
+.bd-footer, a {
+    color: var(--second)!important;
+}
+.footerlink:hover {
+    color: white !important;
+
+}
