@@ -8856,3 +8856,766 @@ Processing by ItemsController#index as HTML
 Completed 200 OK in 67ms (Views: 64.8ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (326.8ms)[0m  [1m[35mCREATE DATABASE "catShop_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (120.3ms)[0m  [1m[35mCREATE DATABASE "catShop_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (23.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (21.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7883264965392658065)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to DeviseCreateUsers (20220314105734)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (18.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20220314105734_devise_create_users.rb:5
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20220314105734_devise_create_users.rb:39
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  ↳ db/migrate/20220314105734_devise_create_users.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220314105734"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateCarts (20220314105936)
+  [1m[35m (5.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (20.4ms)[0m  [1m[35mCREATE TABLE "carts" ("id" bigserial primary key, "total" decimal, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20220314105936_create_carts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (3.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220314105936"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddForeignKeyUserInCartTable (20220314110239)
+  [1m[35m (6.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "carts" ADD "user_id" bigint[0m
+  ↳ db/migrate/20220314110239_add_foreign_key_user_in_cart_table.rb:3
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE  INDEX  "index_carts_on_user_id" ON "carts"  ("user_id")[0m
+  ↳ db/migrate/20220314110239_add_foreign_key_user_in_cart_table.rb:3
+  [1m[35m (5.7ms)[0m  [1m[35mALTER TABLE "carts" ADD CONSTRAINT "fk_rails_ea59a35211"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20220314110239_add_foreign_key_user_in_cart_table.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220314110239"]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateItems (20220314110727)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (16.5ms)[0m  [1m[35mCREATE TABLE "items" ("id" bigserial primary key, "title" character varying, "description" text, "price" decimal, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20220314110727_create_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220314110727"]]
+  ↳ bin/rails:9
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateOrders (20220314110900)
+  [1m[35m (5.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "total" decimal, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20220314110900_create_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220314110900"]]
+  ↳ bin/rails:9
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateJoinTableCartItems (20220314111249)
+  [1m[35m (6.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "join_table_cart_items" ("id" bigserial primary key, "quantity" integer DEFAULT 1, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20220314111249_create_join_table_cart_items.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220314111249"]]
+  ↳ bin/rails:9
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddForeignKeyJoinTableCartItem (20220314111645)
+  [1m[35m (6.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "join_table_cart_items" ADD "cart_id" bigint[0m
+  ↳ db/migrate/20220314111645_add_foreign_key_join_table_cart_item.rb:3
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE  INDEX  "index_join_table_cart_items_on_cart_id" ON "join_table_cart_items"  ("cart_id")[0m
+  ↳ db/migrate/20220314111645_add_foreign_key_join_table_cart_item.rb:3
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "join_table_cart_items" ADD CONSTRAINT "fk_rails_c8b2f85d3f"
+FOREIGN KEY ("cart_id")
+  REFERENCES "carts" ("id")
+[0m
+  ↳ db/migrate/20220314111645_add_foreign_key_join_table_cart_item.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "join_table_cart_items" ADD "item_id" bigint[0m
+  ↳ db/migrate/20220314111645_add_foreign_key_join_table_cart_item.rb:4
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE  INDEX  "index_join_table_cart_items_on_item_id" ON "join_table_cart_items"  ("item_id")[0m
+  ↳ db/migrate/20220314111645_add_foreign_key_join_table_cart_item.rb:4
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "join_table_cart_items" ADD CONSTRAINT "fk_rails_55e5cd4806"
+FOREIGN KEY ("item_id")
+  REFERENCES "items" ("id")
+[0m
+  ↳ db/migrate/20220314111645_add_foreign_key_join_table_cart_item.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220314111645"]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateJoinTableItemOrders (20220314113906)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "join_table_item_orders" ("id" bigserial primary key, "quantity" integer DEFAULT 1, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20220314113906_create_join_table_item_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220314113906"]]
+  ↳ bin/rails:9
+  [1m[35m (8.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddForeignKeyJoinTableItemOrder (20220314113928)
+  [1m[35m (6.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "join_table_item_orders" ADD "item_id" bigint[0m
+  ↳ db/migrate/20220314113928_add_foreign_key_join_table_item_order.rb:3
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE  INDEX  "index_join_table_item_orders_on_item_id" ON "join_table_item_orders"  ("item_id")[0m
+  ↳ db/migrate/20220314113928_add_foreign_key_join_table_item_order.rb:3
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "join_table_item_orders" ADD CONSTRAINT "fk_rails_a6f4e7cf8f"
+FOREIGN KEY ("item_id")
+  REFERENCES "items" ("id")
+[0m
+  ↳ db/migrate/20220314113928_add_foreign_key_join_table_item_order.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "join_table_item_orders" ADD "order_id" bigint[0m
+  ↳ db/migrate/20220314113928_add_foreign_key_join_table_item_order.rb:4
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE  INDEX  "index_join_table_item_orders_on_order_id" ON "join_table_item_orders"  ("order_id")[0m
+  ↳ db/migrate/20220314113928_add_foreign_key_join_table_item_order.rb:4
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "join_table_item_orders" ADD CONSTRAINT "fk_rails_b6c12b4329"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+[0m
+  ↳ db/migrate/20220314113928_add_foreign_key_join_table_item_order.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220314113928"]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddForeignKeyUserInOrderTable (20220314124057)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "orders" ADD "user_id" bigint[0m
+  ↳ db/migrate/20220314124057_add_foreign_key_user_in_order_table.rb:3
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_user_id" ON "orders"  ("user_id")[0m
+  ↳ db/migrate/20220314124057_add_foreign_key_user_in_order_table.rb:3
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20220314124057_add_foreign_key_user_in_order_table.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220314124057"]]
+  ↳ bin/rails:9
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddAttributesUser (20220314141242)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  ↳ db/migrate/20220314141242_add_attributes_user.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  ↳ db/migrate/20220314141242_add_attributes_user.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "adress" character varying[0m
+  ↳ db/migrate/20220314141242_add_attributes_user.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "zipcode" character varying[0m
+  ↳ db/migrate/20220314141242_add_attributes_user.rb:7
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220314141242"]]
+  ↳ bin/rails:9
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-03-15 12:21:15.469190"], ["updated_at", "2022-03-15 12:21:15.469190"]]
+  ↳ bin/rails:9
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7883264965392658065)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:2
+  [1m[36mCart Load (0.6ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ db/seeds.rb:3
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ db/seeds.rb:4
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ db/seeds.rb:5
+  [1m[36mJoinTableCartItem Load (0.4ms)[0m  [1m[34mSELECT "join_table_cart_items".* FROM "join_table_cart_items"[0m
+  ↳ db/seeds.rb:6
+  [1m[36mJoinTableItemOrder Load (0.5ms)[0m  [1m[34mSELECT "join_table_item_orders".* FROM "join_table_item_orders"[0m
+  ↳ db/seeds.rb:7
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "email0@yopmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name", "adress", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "email0@yopmail.com"], ["encrypted_password", "$2a$12$sLHu6hec0in0D.XJmHXDJ.WuT7JKIcGPaQiR.bkKRb.prO1B.SNDW"], ["created_at", "2022-03-15 12:21:18.559602"], ["updated_at", "2022-03-15 12:21:18.559602"], ["first_name", "Brent"], ["last_name", "Boyle"], ["adress", "71112 Sipes Manors"], ["zipcode", "77990-9808"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "email1@yopmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name", "adress", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "email1@yopmail.com"], ["encrypted_password", "$2a$12$lwEOSzYVcJl35gTW4Rc1zuhsl7hmKb3nR6utn4ZfD96zKiupDMPVK"], ["created_at", "2022-03-15 12:21:18.898742"], ["updated_at", "2022-03-15 12:21:18.898742"], ["first_name", "Ai"], ["last_name", "Walsh"], ["adress", "8840 Kerluke Spring"], ["zipcode", "30268-9403"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "email2@yopmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name", "adress", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "email2@yopmail.com"], ["encrypted_password", "$2a$12$wI.crOCd.EdkqcT9bDqOOeOdlKOsG6VgD.T7v2fqibcCF2eIHkJFu"], ["created_at", "2022-03-15 12:21:19.237598"], ["updated_at", "2022-03-15 12:21:19.237598"], ["first_name", "Sun"], ["last_name", "Connelly"], ["adress", "53127 Bauch Ville"], ["zipcode", "63826"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "email3@yopmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name", "adress", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "email3@yopmail.com"], ["encrypted_password", "$2a$12$Eu1vk/YWwvMdfbUf8ptfseZo2.bHe0PlsNlFpUA/1Zd.OMX1gyQ22"], ["created_at", "2022-03-15 12:21:19.574658"], ["updated_at", "2022-03-15 12:21:19.574658"], ["first_name", "Terry"], ["last_name", "Gleason"], ["adress", "806 Johnson Ports"], ["zipcode", "43473"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "email4@yopmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name", "adress", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "email4@yopmail.com"], ["encrypted_password", "$2a$12$gyR/dgNRZiH0y/LaIxYKPO/NVlqyl//AdEVNHvp9UBIk7hDldLfxW"], ["created_at", "2022-03-15 12:21:19.905579"], ["updated_at", "2022-03-15 12:21:19.905579"], ["first_name", "Charleen"], ["last_name", "Hickle"], ["adress", "2267 Fernando Falls"], ["zipcode", "86719-9782"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "email5@yopmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name", "adress", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "email5@yopmail.com"], ["encrypted_password", "$2a$12$EfyPP6Z9HzcLYp3LQVEOaeRWWb6VZz8Xu7FGZrmOq09SH6ILKvjHy"], ["created_at", "2022-03-15 12:21:20.239768"], ["updated_at", "2022-03-15 12:21:20.239768"], ["first_name", "Mohammed"], ["last_name", "McDermott"], ["adress", "36427 Casper Vista"], ["zipcode", "64825-8034"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "email6@yopmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name", "adress", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "email6@yopmail.com"], ["encrypted_password", "$2a$12$s91/cIyq/hw3xSkbaYH/gOTSAnEQYrSKbLZ.nUIsqvSR.so9t6Dca"], ["created_at", "2022-03-15 12:21:20.575697"], ["updated_at", "2022-03-15 12:21:20.575697"], ["first_name", "Verlie"], ["last_name", "Dach"], ["adress", "65310 Elmo Extension"], ["zipcode", "00682"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "email7@yopmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name", "adress", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "email7@yopmail.com"], ["encrypted_password", "$2a$12$KhUy2wmH8G.ziQ2xXOZVKuGNLVDpN7jEHg/X4/tU4JE4BUREh754C"], ["created_at", "2022-03-15 12:21:20.924633"], ["updated_at", "2022-03-15 12:21:20.924633"], ["first_name", "Jeffrey"], ["last_name", "Bartoletti"], ["adress", "171 Jerde Cape"], ["zipcode", "75079"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "email8@yopmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name", "adress", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "email8@yopmail.com"], ["encrypted_password", "$2a$12$rjg8ZmgqTeh/RVW9DIHU9uLpcWt8R5UX6yUnT.1wE9.rcNaY25ogS"], ["created_at", "2022-03-15 12:21:21.256178"], ["updated_at", "2022-03-15 12:21:21.256178"], ["first_name", "Stuart"], ["last_name", "Brakus"], ["adress", "1358 Farrell Rapid"], ["zipcode", "86983-6388"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "email9@yopmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name", "adress", "zipcode") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "email9@yopmail.com"], ["encrypted_password", "$2a$12$VBz2mjmoi4r2nrKYEfM1t.1tpvQsQ5jBCWhZfPteCvM.VPA8/Oaw6"], ["created_at", "2022-03-15 12:21:21.606422"], ["updated_at", "2022-03-15 12:21:21.606422"], ["first_name", "Luisa"], ["last_name", "Johnston"], ["adress", "562 Una Skyway"], ["zipcode", "30804-3049"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Lady Rainicorn"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Alexander Hameowlton"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Lady Rainicorn"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Franklin Longfellow"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Butterscotch"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Charlie"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Jasper"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[36mItem Create (0.7ms)[0m  [1m[32mINSERT INTO "items" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Jasper"], ["description", "Russian White, Black and Tabby"], ["price", "19.99"], ["image_url", "https://images.theconversation.com/files/443350/original/file-20220131-15-1ndq1m6.jpg?ixlib=rb-1.1.0&rect=0%2C0%2C3354%2C2464&q=45&auto=format&w=926&fit=clip"], ["created_at", "2022-03-15 12:21:21.636800"], ["updated_at", "2022-03-15 12:21:21.636800"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Tuna"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Katherine Belle"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Coco"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Chloe"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Max"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Oscar"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Shadow"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Max"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Millie"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Millie"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[36mItem Create (0.4ms)[0m  [1m[32mINSERT INTO "items" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Millie"], ["description", "Himalayan, or Colorpoint Persian"], ["price", "19.99"], ["image_url", "https://images.theconversation.com/files/443350/original/file-20220131-15-1ndq1m6.jpg?ixlib=rb-1.1.0&rect=0%2C0%2C3354%2C2464&q=45&auto=format&w=926&fit=clip"], ["created_at", "2022-03-15 12:21:21.674305"], ["updated_at", "2022-03-15 12:21:21.674305"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Millie"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Max"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mItem Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "items" WHERE "items"."title" = $1 LIMIT $2[0m  [["title", "Oscar"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:34
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:33
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:33
+  [1m[36mCart Create (1.0ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.713358"], ["updated_at", "2022-03-15 12:21:21.713358"], ["user_id", 5]]
+  ↳ db/seeds.rb:33
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:33
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:34
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:33
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:33
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.724408"], ["updated_at", "2022-03-15 12:21:21.724408"], ["user_id", 8]]
+  ↳ db/seeds.rb:33
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:33
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:34
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:33
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:33
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.734506"], ["updated_at", "2022-03-15 12:21:21.734506"], ["user_id", 8]]
+  ↳ db/seeds.rb:33
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:33
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:34
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:33
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:33
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.743124"], ["updated_at", "2022-03-15 12:21:21.743124"], ["user_id", 2]]
+  ↳ db/seeds.rb:33
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:33
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:34
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:33
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:33
+  [1m[36mCart Create (0.3ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.747312"], ["updated_at", "2022-03-15 12:21:21.747312"], ["user_id", 5]]
+  ↳ db/seeds.rb:33
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:33
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:41
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:40
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:40
+  [1m[36mOrder Create (1.0ms)[0m  [1m[32mINSERT INTO "orders" ("created_at", "updated_at", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.760178"], ["updated_at", "2022-03-15 12:21:21.760178"], ["user_id", 4]]
+  ↳ db/seeds.rb:40
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:40
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:41
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:40
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:40
+  [1m[36mOrder Create (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("created_at", "updated_at", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.764764"], ["updated_at", "2022-03-15 12:21:21.764764"], ["user_id", 9]]
+  ↳ db/seeds.rb:40
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:40
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:41
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:40
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:40
+  [1m[36mOrder Create (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("created_at", "updated_at", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.768379"], ["updated_at", "2022-03-15 12:21:21.768379"], ["user_id", 8]]
+  ↳ db/seeds.rb:40
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:40
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:41
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:40
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:40
+  [1m[36mOrder Create (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("created_at", "updated_at", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.771858"], ["updated_at", "2022-03-15 12:21:21.771858"], ["user_id", 9]]
+  ↳ db/seeds.rb:40
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:40
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:41
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:40
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:40
+  [1m[36mOrder Create (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("created_at", "updated_at", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.775190"], ["updated_at", "2022-03-15 12:21:21.775190"], ["user_id", 6]]
+  ↳ db/seeds.rb:40
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:40
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ db/seeds.rb:48
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ db/seeds.rb:49
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:47
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:47
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:47
+  [1m[36mJoinTableCartItem Create (1.0ms)[0m  [1m[32mINSERT INTO "join_table_cart_items" ("created_at", "updated_at", "cart_id", "item_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.791710"], ["updated_at", "2022-03-15 12:21:21.791710"], ["cart_id", 4], ["item_id", 1]]
+  ↳ db/seeds.rb:47
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:47
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ db/seeds.rb:48
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ db/seeds.rb:49
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:47
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:47
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:47
+  [1m[36mJoinTableCartItem Create (0.4ms)[0m  [1m[32mINSERT INTO "join_table_cart_items" ("created_at", "updated_at", "cart_id", "item_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.797288"], ["updated_at", "2022-03-15 12:21:21.797288"], ["cart_id", 2], ["item_id", 1]]
+  ↳ db/seeds.rb:47
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:47
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ db/seeds.rb:48
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ db/seeds.rb:49
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:47
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:47
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:47
+  [1m[36mJoinTableCartItem Create (0.4ms)[0m  [1m[32mINSERT INTO "join_table_cart_items" ("created_at", "updated_at", "cart_id", "item_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.802473"], ["updated_at", "2022-03-15 12:21:21.802473"], ["cart_id", 4], ["item_id", 2]]
+  ↳ db/seeds.rb:47
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:47
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ db/seeds.rb:48
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ db/seeds.rb:49
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:47
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:47
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:47
+  [1m[36mJoinTableCartItem Create (0.4ms)[0m  [1m[32mINSERT INTO "join_table_cart_items" ("created_at", "updated_at", "cart_id", "item_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.807475"], ["updated_at", "2022-03-15 12:21:21.807475"], ["cart_id", 2], ["item_id", 1]]
+  ↳ db/seeds.rb:47
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:47
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ db/seeds.rb:48
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ db/seeds.rb:49
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:47
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT  "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:47
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:47
+  [1m[36mJoinTableCartItem Create (0.4ms)[0m  [1m[32mINSERT INTO "join_table_cart_items" ("created_at", "updated_at", "cart_id", "item_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.812205"], ["updated_at", "2022-03-15 12:21:21.812205"], ["cart_id", 1], ["item_id", 1]]
+  ↳ db/seeds.rb:47
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:47
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ db/seeds.rb:56
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ db/seeds.rb:57
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:55
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:55
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:55
+  [1m[36mJoinTableItemOrder Create (1.3ms)[0m  [1m[32mINSERT INTO "join_table_item_orders" ("created_at", "updated_at", "item_id", "order_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.835264"], ["updated_at", "2022-03-15 12:21:21.835264"], ["item_id", 1], ["order_id", 1]]
+  ↳ db/seeds.rb:55
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:55
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ db/seeds.rb:56
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ db/seeds.rb:57
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:55
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:55
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:55
+  [1m[36mJoinTableItemOrder Create (0.5ms)[0m  [1m[32mINSERT INTO "join_table_item_orders" ("created_at", "updated_at", "item_id", "order_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.842911"], ["updated_at", "2022-03-15 12:21:21.842911"], ["item_id", 2], ["order_id", 3]]
+  ↳ db/seeds.rb:55
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:55
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ db/seeds.rb:56
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ db/seeds.rb:57
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:55
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:55
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:55
+  [1m[36mJoinTableItemOrder Create (0.4ms)[0m  [1m[32mINSERT INTO "join_table_item_orders" ("created_at", "updated_at", "item_id", "order_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.848352"], ["updated_at", "2022-03-15 12:21:21.848352"], ["item_id", 1], ["order_id", 1]]
+  ↳ db/seeds.rb:55
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:55
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ db/seeds.rb:56
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ db/seeds.rb:57
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:55
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:55
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:55
+  [1m[36mJoinTableItemOrder Create (0.5ms)[0m  [1m[32mINSERT INTO "join_table_item_orders" ("created_at", "updated_at", "item_id", "order_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.853248"], ["updated_at", "2022-03-15 12:21:21.853248"], ["item_id", 1], ["order_id", 1]]
+  ↳ db/seeds.rb:55
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:55
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ db/seeds.rb:56
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ db/seeds.rb:57
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:55
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:55
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:55
+  [1m[36mJoinTableItemOrder Create (0.5ms)[0m  [1m[32mINSERT INTO "join_table_item_orders" ("created_at", "updated_at", "item_id", "order_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2022-03-15 12:21:21.858842"], ["updated_at", "2022-03-15 12:21:21.858842"], ["item_id", 1], ["order_id", 5]]
+  ↳ db/seeds.rb:55
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:55
+Started GET "/" for ::1 at 2022-03-15 13:21:56 +0100
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nono13/.rvm/gems/ruby-2.7.4/gems/activerecord-5.2.7/lib/active_record/log_subscriber.rb:98
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navbar.html.erb (1.2ms)
+  Rendered layouts/_flash.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 582ms (Views: 575.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2022-03-15 13:23:13 +0100
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+  Rendered layouts/_flash.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 34ms (Views: 32.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/item/1" for ::1 at 2022-03-15 13:24:16 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/item/1"):
+  
+actionpack (5.2.7) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.7) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.7) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.7) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.7) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.7) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.7) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.7) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.7) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.7) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.7) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.7) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/items/1" for ::1 at 2022-03-15 13:24:51 +0100
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/items_controller.rb:7
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navbar.html.erb (0.5ms)
+  Rendered layouts/_flash.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 78ms (Views: 34.7ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/" for ::1 at 2022-03-15 13:26:44 +0100
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+  Rendered layouts/_flash.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 51ms (Views: 49.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2022-03-15 13:27:12 +0100
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navbar.html.erb (0.7ms)
+  Rendered layouts/_flash.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 48ms (Views: 46.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2022-03-15 13:27:14 +0100
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+  Rendered layouts/_flash.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 31ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2022-03-15 13:27:47 +0100
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+  Rendered layouts/_flash.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 46ms (Views: 45.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2022-03-15 13:27:50 +0100
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+  Rendered layouts/_flash.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 39ms (Views: 37.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2022-03-15 13:28:29 +0100
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  Rendered items/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+  Rendered layouts/_flash.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 43ms (Views: 41.6ms | ActiveRecord: 0.0ms)
+
+

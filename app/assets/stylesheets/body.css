@@ -3,3 +3,13 @@
 body {
     background-color: var(--second)!important;
  }
+
+ h1,h2,h3 {
+    color: var(--prim);
+    font-family: poppins;
+
+}
+
+h5,p {
+    font-family: roboto;
+}
