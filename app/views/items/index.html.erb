@@ -27,7 +27,7 @@
              <%=item.price%>€
               <div class="row justify-content-center mt-3">
                 <a href="<%=item_path(item.id)%>" class="btn btn-cart col-4 mx-2">Read more</a>
-                <!--<a href="<%=cart_index_path%>" data-method="POST" data-params="item_id=<%=item.id%>"class="btn btn-card col-4 mx-2">Add to cart</a>-->
+                <%= button_to "Add to cart", cart_index_path, params: {item_id: item.id, quantity: 1}, method: :post, class: "btn btn-card"%><br>
               </div>
             </div>
           </div>
