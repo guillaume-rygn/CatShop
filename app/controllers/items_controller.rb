@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @items = Item.all.sort_by {rand}[0..5]
   end
 
   def new

@@ -1,74 +1,79 @@
 
-
-<body>
-   
-# <!------------------------ First Section ------------------------------->
 <div class="how-section1">
     <div class="row">
         <div class="col-md-6">
-            <img  src="https://www.woopets.fr/assets/races/000/348/bannerbig2021/british-shorthair_2.jpg" class=" img-fluid" alt=""/>
+            <img  src="<%=@item.image_url%>" class=" img-fluid" alt=""/>
         </div>
         <div class="col-md-6 text-center-justify">
-            <h3>British ShortHair</h3>
-              <p>The ancestors of the British Shorthair were cats who had adapted
-                to the harsh weather of the British Isles, in particular by
-                developing a coat dense enough to protect them from the weather
-                and the cold.</p>  
+        <div class="container m-5">
+            <h3><%=@item.title%></h3>
+              <p><%=@item.description%></p>  
                 <br/>
-               <h3>$60</h3> 
+               <h3><%=@item.price%>€</h3> 
                <br/>
                 <button style="font-weight: bold;border-color:#fb6c74;" type="button" class="btn-lg btn-cart ">
                 Add to cart
                 </button>
-               
+               </div>
         </div>
-    </div>
+       </div>
+       </div>
     <hr>
-    <br/>
-# <!---------------------------- Second Section ----------------------------->
+    
 
-<div id="description" class="row">
 
-<div class="col-8 col-lg-8 col-md-6 mb-3">
-    The ancestors of the British Shorthair were cats who had adapted to the harsh weather of the British Isles, in particular by developing a coat dense enough to protect them from the weather and the cold.
+ <div id="description" class="row">
+
+  <div class=" col-lg-7 col-md-7 col-sm-12 mb-3 ">
+  <div class="container m-5">
+    <h6>Raw and natural beauty:</h6>
+    <p>We are a team of creative young people who love their cats but are also very good at taking pictures.What distinguishes our photos from others? Our photographer’s attention to detail, emphasizing the rarity of the moment and never using Photoshop.</p>
+    <h6>Photos of cats warming the heart:</h6>
+    <p>We have a lifetime of experience in capturing moments of love between humans and their companions.</p>
+    <h6>Your cat’s best friend:</h6>
+    <p>You know your cat is the perfect purring companion, but sometimes it’s too hard to get a good picture of your four-legged friend. Thanks to our state-of-the-art technology and qualified cat photography, we will be able to capture all the adorability of your feline friends.</p>
+    <h6>Create your own chat-themed blog:</h6>
+    <p>Be part of the movement and start blogging on your chats, sharing photos and videos with our help. You can even monetize with Google Adsense or affiliate links on the sidebars of our blog. Miaou!</p>
+    <h6>Professional service:</h6>
+    <p>Only the best of the best are on my website - find your perfect four-legged friend and contact him now!</p>
+    <h6>Wide variety of cats:</h6>
+    <p>I will meet all the needs of your cat - whether it’s kittens, adult cats or just an old photo to accompany your story, I can capture them in a photo.</p>
+    <h6>I’ll take care of everything:</h6>
+    <p>Go ahead and leave all the worries behind - I will provide you with quality photos that you can also use on other websites. In addition, I will do my editing work for you!</p>
+  </div>
+    </div>
+    <div class="col-12 col-lg-5 col-md-5 mb-3 ">
+    <h3 class="text-center">Related products</h3>
+    <div class="row justify-content-center">
     
-    Harrison Weir, one of the English pioneers of cat breeding, founder of the National Cat Club and organizer of the first feline exhibition in London in 1871, was instrumental in the development of the British Shorthair. Moreover, a female of the breed has been exhibited since this first edition held at the Crystal Palace. The pussy did not go unnoticed, with its beautiful blue coat and amber-colored eyes.
-    
-    The two world wars were very close to making the British Shorthair disappear. Both in the interwar period and after 1945, many breeders crossed with Persians, then Russian Blues and ...</div>
-    <div class="col-4">
-    <div class="row">
-        <div class="col-12">
-            <h3 class="text-center">Related products</h3>
-            <div  class="card-sl col-8">
-                <div class="card-image">
-                  <img
-                    src="https://www.woopets.fr/assets/races/000/348/bannerbig2021/british-shorthair_2.jpg"
-                  />
-                </div>
-    
-                <div class="card-heading text-center">British ShortHair</div>
-                <div class="card-text text-center">
-                  The ancestors of the British Shorthair were cats who had adapted
-                  to the harsh weather of the British Isles, in particular by
-                  developing a coat dense enough to protect them from the weather
-                  and the cold.
-                </div>
-                <div class="card-text text-center">
-                  $60
-                  <div class="row justify-content-center">
-                  <button type="button" class="btn btn-card ">
-                  
-                    Read more
-                  </button>
-                  <button type="button" class="btn btn-cart ">
-                  
-                    Add to cart
-                  </button>
-                  </div>
-                </div>
+     <% @items.each do |item|%>
+     <div class="col-8">
+            
+            <div class="card card-sl mb-4">
+            <img class="card-img-top" src="<%=item.image_url%>" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%=item.title%></h5>
+              <p class="card-text"><%=item.description%></p>
+              <div class="row justify-content-center">
+              <button type="button" class="btn btn-card ">
+              
+                Read more
+              </button>
+              <button type="button" class="btn btn-cart ">
+              
+                Add to cart
+              </button>
               </div>
-        </div>
+       </div>
+      </div>
+      
+       
+      </div>
+            
+           
+          
+       <% end %>
+      
+    </div>
+  </div>
 </div>
-</div>
-
-</body>
