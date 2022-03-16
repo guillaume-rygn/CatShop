@@ -3,6 +3,8 @@ class CartController < ApplicationController
 
   def show
     total()
+    @amount = @cart.total
+    @stripe_amount = (@amount * 100).to_i
   end
 
   def update
