@@ -19,4 +19,9 @@
 
 <%=@total%>
 
+<%= button_to "Delete to cart", cart_path(params[:id]), method: :put, confirm: "Êtes-vous sûr de vouloir vider le panier ?", class: "btn btn-card"%><br>
+
+
+<%= button_to "create order", orders_path, method: :post, confirm: "Êtes-vous sûr de vouloir creer order ?", class: "btn btn-card"%><br>
+
 
