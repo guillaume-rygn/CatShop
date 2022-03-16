@@ -1,0 +1,63 @@
+/* = require_self */
+
+.header-cart {
+    margin-top: 100px !important;
+    font-family: Poppins !important;
+
+    margin-bottom: 50px !important;
+    align-items: center !important;
+}
+
+.header-cart img  {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+#ulcart {
+    display: flex !important;
+    list-style: none !important;
+    list-style-type: none !important;
+    
+
+}
+
+.tablecart {
+    background: var(--prim)!important;
+    border-color: var(--second)!important;
+    color: var(--second)!important;
+    margin-bottom: 10%!important;
+}
+
+.btn-order{
+    text-align: center!important;
+    justify-content: center!important;
+    border-color: var(--prim)!important;
+    background: var(--prim)!important;
+    color: var(--second)!important;
+    width: 200px!important;
+    height: 40px!important;
+    margin-bottom: 20%!important;
+}
+
+.btn-order:hover{
+    border-color: var(--second)!important;
+    background: var(--second)!important;
+    color: var(--prim)!important;
+
+
+}
+
+.btn-destroy {
+    color: var(--second)!important;
+    border-color: var(--second)!important;
+    
+}
+
+.btn-destroy:hover {
+    color: var(--prim)!important;
+    background-color: var(--second)!important ;
+    color: #fff!important;
+    background: #E26D5C!important;
+    -webkit-animation: pulse 1.5s infinite;
+
+}

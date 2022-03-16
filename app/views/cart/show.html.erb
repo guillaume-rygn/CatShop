@@ -24,4 +24,56 @@
 
 <%= button_to "create order", orders_path, method: :post, confirm: "Êtes-vous sûr de vouloir creer order ?", class: "btn btn-card"%><br>
 
+<div class="container">
+    <div class="header-cart">
+        <ul id="ulcart"class="d-flex flex-wrap align-items-center justify-content-center ">
+            <li class="me-3"><img src="https://iconarchive.com/download/i78686/iconka/meow-2/cat-gift.ico" alt=""></li>
+            <li class="me-3"><h3>This is your Cat-Cart </h3></li>
+            <li class="me-3"><img src="https://iconarchive.com/download/i78686/iconka/meow-2/cat-gift.ico" alt=""></li>
+        </ul>
+        
+    
+    </div>
+</div>
 
+<div class="container">
+
+
+        <table class="table tablecart">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Item Description</th>
+                <th scope="col"></th>
+                <th scope="col">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <%@cart.join_table_cart_items.each do |item| %>
+            <tr>
+                <th scope="row"><%= button_to "Remove", jointablecartitem_path(item.id), params: {cart_id: params[:id]}, method: :delete, confirm: "Êtes-vous sûr de vouloir supprimer l'article ?", class: "btn btn-destroy"%><br></th>
+                <td><%=item.item.title%></td>
+                <td><%=item.item.description%></td>
+                <td></td>
+                <td><%=item.item.price%></td>
+            </tr>
+            <%end%>
+            </tbody>
+            <thead>
+                <tr>
+                    <th scope="col"><%= button_to "Delete cart", cart_path(params[:id]), method: :put, confirm: "Êtes-vous sûr de vouloir vider le panier ?", class: "btn btn-destroy"%><br></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Total Price :</th>
+                    <th scope="col"><%=@total%></th>
+                </tr>
+            </thead>
+        </table>
+</div>
+<div class="container">
+    <div class="order-btn text-center">
+    <%= button_to "Create order", orders_path, method: :post, confirm: "Êtes-vous sûr de vouloir creer order ?", class: "btn btn-order"%><br>
+    </div>
+</div>
