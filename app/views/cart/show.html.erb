@@ -1,10 +1,22 @@
-<%@cart.items.each do |item| %>
+<%@cart.join_table_cart_items.each do |item| %>
 
-<p><%=item.title%></p>
-<p><%=item.description%></p>
+<p><%=item.item.title%></p>
+<p><%=item.item.description%></p>
+<p><%=item.inspect%></p>
+<p><%=item.item.price%></p>
+
+
+
+<%= button_to "Delete to cart", jointablecartitem_path(item.id), params: {cart_id: params[:id]}, method: :delete, confirm: "Êtes-vous sûr de vouloir supprimer l'article ?", class: "btn btn-card"%><br>
+
+<!--<%= button_to "Delete to cart", jointablecartitem_path(item.id), params: {cart_id: params[:id]}, method: :put, class: "btn btn-card"%><br>-->
+
+
+
+
 
 <%end%>
 
-
+<%=@total%>
 
 
