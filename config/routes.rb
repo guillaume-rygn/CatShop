@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :items
   devise_for :users
   root to: "items#index"
-  resources :cart, only: [:show, :destroy]
+  resources :cart, only: [:show, :update]
   resources :jointablecartitem, only: [:create, :update, :destroy]
 
   resources :user, only: [:show]

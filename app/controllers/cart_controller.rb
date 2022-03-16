@@ -5,13 +5,23 @@ class CartController < ApplicationController
     total()
   end
 
-  def destroy
-    @cart = Cart.find(params[:id])
-    @cart.destroy
-    redirect_to root_path
+  def update
+
+    updatecart()
+
+    redirect_to cart_path(params[:id])
   end
 
   private
+
+  def updatecart
+    @cart = Cart.find(params[:id])
+    @article = @cart.join_table_cart_items
+    
+    @article.each do |item|
+      item.destroy
+    end
+  end
 
   def authenticate_user
     unless current_user
@@ -28,7 +38,7 @@ class CartController < ApplicationController
     @cart = Cart.find_by(user_id: current_user.id)
     @total = 0
     @cart.join_table_cart_items.each do |item|
-      @total = @total + item.item.price
+      @total = @total + (item.item.price * item.quantity)
     end
 
     @cart.update(total: @total)
