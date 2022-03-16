@@ -1,0 +1,28 @@
+.fsign {
+    padding-top: 20% !important;
+    padding-bottom: 20%!important;
+    font-family: Poppins!important;
+    color: var(--prim)!important;
+}
+
+
+input[type="email"], input[type="email"]::selection {
+    border-color: var(--prim)!important;
+    background-color : var(--second) !important; 
+  }
+
+input[type="password"], input[type="password"]::selection {
+    border-color: var(--prim)!important;
+    background-color : var(--second) !important; 
+  }
+
+.btn-signupform{
+    margin-top: 20px !important;
+    color: var(--second)!important;
+    border-color: var(--prim) !important;
+    background-color: var(--prim) !important;
+}
+
+.form-group{
+    color: var(--prim);
+}
