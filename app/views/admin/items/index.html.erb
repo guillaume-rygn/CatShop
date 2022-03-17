@@ -3,7 +3,7 @@
 <div class="container">
 
 
-        <table class="table tablecart">
+        <table class="table tablecart my-5">
             <thead>
             <tr>
                 <th scope="col">Update</th>
@@ -29,14 +29,9 @@
             </tr>
             <%end%>
             </tbody>
-            <thead>
-                <tr>
-                    <th scope="col"><br></th>
-                    <td scope="col"></td>
-                    <td scope="col"><%= link_to "Create items", {action: :new}, class: "btn btn-createitem"%></td>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
-                </tr>
             </thead>
+                        <td class="text-center"><%= link_to "Create items", {action: :new}, class: "btn btn-createitem"%></td>
+
         </table>
+
 </div>

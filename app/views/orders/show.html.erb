@@ -15,6 +15,7 @@
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                     <div class="d-flex flex-row align-items-center">
                         <h4 class="mr-1"><%=item.price%></h4>
+                        <h4 class="mr-1">x<%=JoinTableItemOrder.find_by(item_id: item.id, order_id: @order.id).quantity%></h4>
                     </div>
                     <a href="<%=item_path(item.id)%>"  class="btn btn-cart col-4 mx-2 w-50">Read more</a>
                 </div>
