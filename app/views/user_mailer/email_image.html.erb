@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h1>Hey <%= @user.first_name %> and thank you !</h1>
+  <p>
+    You are on catshop-io.fr and that's your order :
+  </p>
+  <p>You ordered: <%= @order.item.title %>
+    <br>
+    This is your image (no picture? find "Show pictures")
+    <br>
+    <%= image_tag("#{@order.item.image_url}") %>
+  </p>
+  <p>
+    You can connect on: <%= @url %>.
+  </p>
+  <p> See you soon on catshop-io.fr ! </p>
+</body>
+</html>
