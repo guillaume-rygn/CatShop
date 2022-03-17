@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "items#index"
   resources :cart, only: [:show, :update]
   resources :jointablecartitem, only: [:create, :update, :destroy]
-
+  resources :charges
   resources :user, only: [:show]
 
   # Ressource au sous-niveau admin

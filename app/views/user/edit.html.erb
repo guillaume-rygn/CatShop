@@ -1,0 +1,52 @@
+<%= form_for @user do |f|%>
+  <div class="container contact">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="contact-info">
+          <img src="https://cdn4.iconfinder.com/data/icons/yellow-cats-social-life/128/scared-512.png" style="width:100px;" alt="image"/>
+          <h3>Modifier votre profil</h3>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="contact-form">
+          <div class="form-group">
+            <br/><label id="label1" class="control-label col-sm-2" for="fname">Firstname:</label>
+            <div class="col-sm-10">          
+            <%= f.text_field :first_name, class:"form-control area"%>
+            </div>
+          </div>
+
+          <div class="form-group mt-3">
+            <label id="label2" class="control-label col-sm-4" for="lname">Lastname:</label>
+            <div class="col-sm-10">          
+            <%= f.text_field :last_name, class:"form-control area"%>
+            </div>
+          </div>
+
+          <div class="form-group mt-3">
+            <label id="label3" class="control-label col-sm-4" for="lname">Adress:</label>
+            <div class="col-sm-10">          
+            <%= f.text_area :adress, class:"form-control area"%>
+            </div>
+          </div>
+
+          <div class="form-group mt-3">
+            <label id="label4" class="control-label col-sm-4" for="lname">Zipcode:</label>
+            <div class="col-sm-10">          
+            <%= f.text_area :zipcode, class:"form-control area"%>
+            </div>
+          </div>
+          
+          <div class="form-group">        
+            <div class="col-sm-offset-2 col-sm-10 mt-3">
+            <%= submit_tag "Modifier", class: 'btn btn-secondary px-4' %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="<%= user_path(current_user.id) %>" id="profile-btn" class="btn btn-outline-primary px-4">Back to profile</a>
+  </div>
+
+<% end %>

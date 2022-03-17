@@ -1,10 +1,15 @@
 class OrdersController < ApplicationController
+
+  skip_before_action :verify_authenticity_token, :only => [:create]
+
+
   def index
     @orders = Order.all
   end
 
   def show
     @order = Order.find(params[:id])
+    
   end
 
   def new
@@ -12,6 +17,29 @@ class OrdersController < ApplicationController
   end
 
   def create
+
+    @cart = current_user.cart
+
+    @total = @cart.total
+    @amount = (@total * 100).to_i
+
+    customer = Stripe::Customer.create({
+      email: params[:stripeEmail],
+      source: params[:stripeToken],
+    })
+  
+    charge = Stripe::Charge.create({
+      customer: customer.id,
+      amount: @amount,
+#      description: 'Rails Stripe customer',
+      currency: 'eur',
+    })
+  
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_charge_path
+  else
+
     order = Order.new(
       'user_id' => current_user.id
     )
@@ -21,8 +49,13 @@ class OrdersController < ApplicationController
     joinitem()
     total()
     updatecart()
+    updatetotal()
 
     redirect_to root_path # a user returns on his order
+    flash[:notice] = "commande effectuée"
+
+
+
   end
 
   def edit
@@ -78,6 +111,11 @@ class OrdersController < ApplicationController
     @article.each do |item|
       item.destroy
     end
+  end
+
+  def updatetotal
+    @cart = current_user.cart
+    @cart.update(total: 0)
   end
 
 
