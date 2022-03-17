@@ -1,0 +1,40 @@
+
+
+<div class="container">
+    <div class="text-center row justify-content-center">
+        <div class="col-xs-3 col-sm-6 col-md-6 col-lg-6">
+          <%= form_tag url_for(action: 'update'), method: "put" %>
+
+                <div class="form-group">
+                  <%= label_tag :title %><br />
+                  <%= text_field_tag :title, @item.title, class:"form-control" %>
+                </div>
+                <br>
+                <div class="form-group">
+                  <%= label_tag :description %><br />
+                  <%= text_field_tag :description, @item.description, class:"form-control" %>
+                </div>
+                <br>
+                <div class="form-group">
+                  <%= label_tag :price %><br />
+                  <%= number_field_tag :price, @item.price.to_i, class:"form-control" %>
+                </div>
+                <br>
+                <div class="form-group">
+                  <%= label_tag :image_url %><br />
+                  <%= text_field_tag :image_url, @item.image_url, class:"form-control" %>
+                </div>
+                <br>
+                <div class="form-group">
+                  <%= label_tag :category_id %><br />
+                  <%= number_field_tag :category_id, @item.category_id, class:"form-control" %>
+                </div>
+                <br>
+
+                <div class="actions">
+                  <%= submit_tag "Create", class:"btn btn-signupform" %>
+                </div>
+
+        </div>
+    </div>
+</div>

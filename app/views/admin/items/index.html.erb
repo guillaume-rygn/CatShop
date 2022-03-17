@@ -18,12 +18,13 @@
 
             <%@items.each do |item| %>
             <tr>
-                <th scope="row"><%= button_to "Update Item", class: "btn btn-destroy"%></th>
+                <th scope="row"><%= button_to "Update", edit_admin_item_path(item.id),  method: :get, class: "btn btn-updateitem"%></th>
                 <td><%=item.title%></td>
                 <td><%=item.description%></td>
                 <td></td>
                 <td><%=item.price%></td>
-                <td><%= button_to "Destroy", class: "btn btn-destroy"%></td>
+                <td><%= button_to "Delete", item_path(item.id), params: {cart_id: params[:id]}, method: :delete, confirm: "Êtes-vous sûr de vouloir supprimer l'article ?", class: "btn btn-destroyitem"%></td>
+
                 
             </tr>
             <%end%>
@@ -32,7 +33,7 @@
                 <tr>
                     <th scope="col"><br></th>
                     <td scope="col"></td>
-                    <td scope="col"><%= link_to "Create items", {action: :new}, class: "btn btn-destroy"%></td>
+                    <td scope="col"><%= link_to "Create items", {action: :new}, class: "btn btn-createitem"%></td>
                     <td scope="col"></td>
                     <td scope="col"></td>
                 </tr>

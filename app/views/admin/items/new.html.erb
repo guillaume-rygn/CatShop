@@ -1,8 +1,16 @@
-<h1>salut</h1>
+
 
 <div class="container">
+
+<% if @item.errors.any? %>
+              <% @item.errors.full_messages.each do |message| %>
+                    <div class="container alert alert-danger d-flex align-items-center p-1 mt-1" role="alert"><%= message %></div>
+                <% end %>
+              <% end %>
+
     <div class="text-center row justify-content-center">
         <div class="col-xs-3 col-sm-6 col-md-6 col-lg-6">
+
           <%= form_tag url_for(action: 'create'), method: "post" %>
 
                 <div class="form-group">
@@ -17,7 +25,7 @@
                 <br>
                 <div class="form-group">
                   <%= label_tag :price %><br />
-                  <%= text_field_tag :price, @item.price, class:"form-control" %>
+                  <%= number_field_tag :price, @item.price.to_i, class:"form-control" %>
                 </div>
                 <br>
                 <div class="form-group">
@@ -25,7 +33,11 @@
                   <%= text_field_tag :image_url, @item.image_url, class:"form-control" %>
                 </div>
                 <br>
- 
+                <div class="form-group">
+                  <%= label_tag :category_id %><br />
+                  <%= number_field_tag :category_id, @item.category_id, class:"form-control" %>
+                </div>
+                <br>
 
                 <div class="actions">
                   <%= submit_tag "Create", class:"btn btn-signupform" %>

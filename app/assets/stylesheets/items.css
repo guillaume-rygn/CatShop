@@ -1,0 +1,42 @@
+
+/* = require_self */
+
+.btn-destroyitem {
+    border-color: white !important;
+    background-color: white !important;
+    color: var(--prim)!important;
+}
+
+.btn-destroyitem:hover {
+    border-color: var(--danger) !important;
+    background-color: var(--danger) !important;
+    color: white!important;
+}
+
+.btn-updateitem {
+    background-color: var(--prim)!important;
+    border-color: turquoise!important;
+    color: turquoise!important;
+}
+
+.btn-updateitem:hover {
+    background-color: turquoise!important;
+    border-color: turquoise!important;
+    color: var(--prim)!important;
+}
+
+.btn-createitem {
+    color: white!important;
+    border-color: white!important;
+    background-color: var(--success)!important;
+    
+}
+
+.btn-createitem:hover {
+    color: white!important;
+    background-color: var(--success)!important;
+    color: #fff!important;
+    background: var(--success)!important;
+    -webkit-animation: pulse 1.5s infinite;
+
+}

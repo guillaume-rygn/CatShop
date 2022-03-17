@@ -14,11 +14,13 @@ module Admin
         end
         
         def create
+            
             @item = Item.create(
                 'title' => params[:title],
                 'description' => params[:description],
                 'price' => params[:price],
-                'image_url' => params[:image_url]
+                'image_url' => params[:image_url],
+                'category_id' => params[:category_id]
             )
 
             if @item.save
@@ -28,12 +30,19 @@ module Admin
             end
         end
 
+        def edit
+            
+            @item = Item.find(params[:id])
+          end
+        
         def update
+            @items = Item.find(params[:id])
+            
 
             if @items.update(post_params)
                 redirect_to item_path(item.id)
                 else
-                    render :new
+                    render :edit
                 end
             
         end
@@ -52,3 +61,4 @@ module Admin
 
     end
 end
+

@@ -38,6 +38,13 @@ end
   );
 end
 
+#Create 1 admin
 
-
+user = User.create!(
+  first_name: "The",
+  last_name: "Adminisatator",
+  password: "azerty",
+  email: "admin@yopmail.com",
+  is_admin: true,
+);
 

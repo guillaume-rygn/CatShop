@@ -1,1 +1,35 @@
-<h1>tchoin</h1>
+<div class="container">
+    <h3>Order n° <%= @order.id%></h3></li>
+</div>
+
+
+<div class="container">
+
+
+        <table class="table tablecart">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Creation date</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            <tr>
+                <td></td>
+                <td><%= @order.created_at%></td>
+                <td><%= @order.user.first_name%></td>
+                <td><%= @order.user.last_name%></td>
+                <td> <%= @order.total%></td>
+
+            </tr>
+
+            </tbody>
+            
+        </table>
+        
+</div>
