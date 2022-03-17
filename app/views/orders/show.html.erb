@@ -1,2 +1,25 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+
+<h2 class="text-center">Content of your order</h2>
+<br/>
+<% @order.items.each do |item|%>
+
+<div class="container mt-2 mb-2">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-10">
+             <div class="row p-2 bg-white border rounded mt-2">
+                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="<%=item.image_url%>"></div>
+                <div class="col-md-6 mt-1">
+                    <h5 id="title-order-show"><%=item.title%></h5>
+                    <p class="text-justify  para mb-0"><%=item.description%><br><br></p>
+                </div>
+                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                    <div class="d-flex flex-row align-items-center">
+                        <h4 class="mr-1"><%=item.price%></h4>
+                    </div>
+                    <a href="<%=item_path(item.id)%>"  class="btn btn-cart col-4 mx-2 w-50">Read more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
