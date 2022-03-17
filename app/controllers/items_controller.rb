@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @category = Category.all
+    switchCategory()
   end
 
   def show
@@ -36,6 +37,20 @@ class ItemsController < ApplicationController
   private
 
   def post_params
-    params.require(:item).permit(:title, :description, :price, :image_url)
+    params.require(:item).permit(:title, :description, :price, :image_url, :category)
+  end
+
+  def switchCategory
+    if params[:category].nil? || params[:category] == "all cats"
+      @items = Item.all
+    else
+      @items = []
+      Item.all.each do |item|
+        if item.category_id == params[:category].to_i
+          @items << item
+        end
+      end
+      
+    end
   end
 end
