@@ -8,6 +8,10 @@ JoinTableItemOrder.destroy_all
 
 
 
+#Create 5 categories
+5.times do |t|
+   category = Category.create(breed: Faker::Creature::Cat.breed );
+end
 
 
 #Create 20 items
@@ -17,6 +21,7 @@ JoinTableItemOrder.destroy_all
     description: "Joli petit chat des montagnes au pelage soyeux et arborant de toute odeur au vent le vent demain venant !",
     price: 19.99,
     image_url: "https://images.theconversation.com/files/443350/original/file-20220131-15-1ndq1m6.jpg?ixlib=rb-1.1.0&rect=0%2C0%2C3354%2C2464&q=45&auto=format&w=926&fit=clip",
+    category_id: Category.all.sample.id
   );
 end
 
@@ -31,3 +36,7 @@ end
     email: "email#{t}@yopmail.com"
   );
 end
+
+
+
+
