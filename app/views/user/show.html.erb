@@ -1,32 +1,40 @@
 
-
-    <div class="container mt-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-8">
-                <div class="card p-3 py-4">
-                    <div class="text-center"> <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle"> </div>
-                    <div class="text-center mt-3"> 
-                        <h3 class="mt-2 mb-0"><%=@user.first_name%> <%=@user.last_name %></h3> 
-                        <br/>
-                        <div class="px-4 mt-1">
-                            <h6>Adress:&nbsp;&nbsp;&nbsp;<%=@user.adress%></h6><br/>
-                            <h6>Zipcode:&nbsp;&nbsp;&nbsp;<%=@user.zipcode%></h6><br/>
-                            <h6>Email:&nbsp;&nbsp;&nbsp;<%=@user.email%></h6><br/>
-                        </div>
-                        <ul class="social-list">
-                            <li><i class="fa fa-facebook"></i></li>
-                            
-                            <li><i class="fa fa-instagram"></i></li>
-                            <li><i class="fa fa-linkedin"></i></li>
-                            <li><i class="fa fa-google"></i></li>
-                        </ul>
-                        <div class="buttons">
-                         <a   class="btn btn-outline-primary px-4">My orders</a>
-                         <a  href="<%= edit_user_registration_path %>" class="btn btn-primary px-4 ms-3">Settings</a> 
-                         </div>
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-3 py-4">
+                <div class="text-center"> <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle"> </div>
+                <div class="text-center mt-3"> 
+                <% if @user.first_name != nil || @user.lastname != nil %>
+                    <h3 class="mt-2 mb-0"><%=@user.first_name%> <%=@user.last_name %></h3> 
+                    <br/>
+                    <% end %>
+                    <div class="px-4 mt-1">
+                    <% if @user.adress != "" %>
+                        <h6>Adress:&nbsp;&nbsp;&nbsp;<%=@user.adress%></h6><br/>
+                        <% end %>
+                    <% if @user.zipcode != "" %>    
+                        <h6>Zipcode:&nbsp;&nbsp;&nbsp;<%=@user.zipcode%></h6><br/>
+                        <% end %>
+                    <% if @user.email != "" %>    
+                        <h6>Email:&nbsp;&nbsp;&nbsp;<%=@user.email%></h6><br/>
+                        <% end %>
                     </div>
+                    <ul class="social-list">
+                        <li><i class="fa fa-facebook"></i></li>
+                        
+                        <li><i class="fa fa-instagram"></i></li>
+                        <li><i class="fa fa-linkedin"></i></li>
+                        <li><i class="fa fa-google"></i></li>
+                    </ul>
+                    <div class="buttons">
+                     <a href="<%=order_path(current_user.id)%>"  class="btn btn-outline-primary px-4">My orders</a>
+                     <a  href="<%= edit_user_registration_path %>" class="btn btn-primary px-4 ms-3">Settings</a> 
+                     <a href="<%= edit_user_path(current_user.id) %>" class="btn btn-outline-primary px-4 ms-3">Edit profile</a>
+
+                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+</div>
