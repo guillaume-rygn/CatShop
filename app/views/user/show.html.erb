@@ -5,11 +5,7 @@
             <div class="card p-3 py-4">
                 <div class="text-center"> <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle"> </div>
                 <div class="text-center mt-3"> 
-<<<<<<< HEAD
-                <% if @user.first_name != nil || @user.last_name != nil %>
-=======
                 <% if @user.first_name.nil? || @user.last_name.nil?%>
->>>>>>> development
                     <h3 class="mt-2 mb-0"><%=@user.first_name%> <%=@user.last_name %></h3> 
                     <br/>
                     <% end %>

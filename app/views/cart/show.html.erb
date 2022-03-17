@@ -10,9 +10,15 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container" id="container">
 
+<%if @cart.items.length == 0%>
 
+<div class="table tablecart text-center py-5">
+<p>Your cart is empty</p>
+</div>
+
+<%else%>
         <table class="table tablecart">
             <thead>
             <tr>
@@ -25,12 +31,17 @@
             </thead>
             <tbody id="tableitem">
 
-            <%@cart.join_table_cart_items.each do |item| %>
+            <%@cart.join_table_cart_items.sort.each do |item| %>
             <tr id="item<%=item.id%>">
                 <th scope="row"><%= button_to "Remove", jointablecartitem_path(item.id), remote: true , params: {cart_id: params[:id]}, method: :delete,  confirm: "Êtes-vous sûr de vouloir supprimer l'article ?", class: "btn btn-destroy"%><br></th>
-                <td><%=item.item.title%></td>
+                
+                <td><a href="<%=item_path(item.item.id)%>"><%=item.item.title%></a></td>
                 <td><%=item.item.description%></td>
-                <td><%=item.quantity%></td>
+                <td>
+                <span id="add<%=item.id%>"><%= button_to "+", jointablecartitem_path(item.id), method: :put, params: {quantity: item.quantity + 1}, class: "btn btn-destroy", style: "display:inline-block"%></span>
+                   <span id="quantity<%=item.id%>"> <%=item.quantity%>   </span> 
+                   <span id="remove<%=item.id%>"><%= button_to "-", jointablecartitem_path(item.id), method: :put, params: {quantity: item.quantity - 1}, class: "btn btn-destroy", style: "display:inline-block"%></span></td>
+
                 <td class="number"><%=item.item.price * item.quantity%></td>
             </tr>
             <%end%>
@@ -65,5 +76,8 @@
             </script>
        
         </form>
+
+ <%end%>
+
     </div>
 </div>
