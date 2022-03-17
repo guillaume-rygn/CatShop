@@ -18,7 +18,20 @@
 
       <div class="text-end">
 
+      
+
         <%  if user_signed_in? %>
+        <%# Navbar administrateur  %>
+
+        <%  if current_user.is_admin? %>
+        <%= link_to 'Order List', [:admin, Order], class:"btn btn-nav me-2" %>
+        <% end %>
+        <%  if current_user.is_admin? %>
+        <%= link_to 'Items modifications', [:admin, Item], class:"btn btn-nav me-2" %>
+        <% end %>
+
+        <%# Navbar utilisateur %>
+
 
         <% if Cart.find_by(user_session).total == nil && Order.find_by(user_session).total == nil %> <!-- user_id.params[:user_id] -->
 
@@ -49,6 +62,7 @@
         <%= link_to "Sign-up", new_user_registration_path , class:"btn btn-signup"%>
 
         <% end %>
+
       </div>
     </div>
   </div>
