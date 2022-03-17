@@ -11,7 +11,11 @@ class CartController < ApplicationController
 
     updatecart()
 
-    redirect_to cart_path(params[:id])
+    respond_to do |format|
+      format.html { redirect_to cart_path(params[:cart_id]) }
+      format.js { }
+    end
+    
   end
 
   private

@@ -1,29 +1,3 @@
-<%@cart.join_table_cart_items.each do |item| %>
-
-<p><%=item.item.title%></p>
-<p><%=item.item.description%></p>
-<p><%=item.inspect%></p>
-<p><%=item.item.price%></p>
-
-
-
-<%= button_to "Delete to cart", jointablecartitem_path(item.id), params: {cart_id: params[:id]}, method: :delete, confirm: "Êtes-vous sûr de vouloir supprimer l'article ?", class: "btn btn-card"%><br>
-
-<!--<%= button_to "Delete to cart", jointablecartitem_path(item.id), params: {cart_id: params[:id]}, method: :put, class: "btn btn-card"%><br>-->
-
-
-
-
-
-<%end%>
-
-<%=@total%>
-
-<%= button_to "Delete to cart", cart_path(params[:id]), method: :put, confirm: "Êtes-vous sûr de vouloir vider le panier ?", class: "btn btn-card"%><br>
-
-
-<%= button_to "create order", orders_path, method: :post, confirm: "Êtes-vous sûr de vouloir creer order ?", class: "btn btn-card"%><br>
-
 <div class="container">
     <div class="header-cart">
         <ul id="ulcart"class="d-flex flex-wrap align-items-center justify-content-center ">
@@ -45,29 +19,29 @@
                 <th scope="col"></th>
                 <th scope="col">Item Name</th>
                 <th scope="col">Item Description</th>
-                <th scope="col"></th>
-                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price per article</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="tableitem">
 
             <%@cart.join_table_cart_items.each do |item| %>
-            <tr>
-                <th scope="row"><%= button_to "Remove", jointablecartitem_path(item.id), params: {cart_id: params[:id]}, method: :delete, confirm: "Êtes-vous sûr de vouloir supprimer l'article ?", class: "btn btn-destroy"%><br></th>
+            <tr id="item<%=item.id%>">
+                <th scope="row"><%= button_to "Remove", jointablecartitem_path(item.id), remote: true , params: {cart_id: params[:id]}, method: :delete,  confirm: "Êtes-vous sûr de vouloir supprimer l'article ?", class: "btn btn-destroy"%><br></th>
                 <td><%=item.item.title%></td>
                 <td><%=item.item.description%></td>
-                <td></td>
-                <td><%=item.item.price%></td>
+                <td><%=item.quantity%></td>
+                <td class="number"><%=item.item.price * item.quantity%></td>
             </tr>
             <%end%>
             </tbody>
             <thead>
                 <tr>
-                    <th scope="col"><%= button_to "Delete cart", cart_path(params[:id]), method: :put, confirm: "Êtes-vous sûr de vouloir vider le panier ?", class: "btn btn-destroy"%><br></th>
+                    <th scope="col"><%= button_to "Delete cart", cart_path(params[:id]), method: :put, remote: true, confirm: "Êtes-vous sûr de vouloir vider le panier ?", class: "btn btn-destroy"%><br></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col">Total Price :</th>
-                    <th scope="col"><%=@total%></th>
+                    <th scope="col" id="total"><%=@total%></th>
                 </tr>
             </thead>
         </table>
