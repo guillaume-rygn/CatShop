@@ -10,8 +10,11 @@
 }
 .bd-footer, a {
     color: var(--second)!important;
+    text-decoration: none!important;
+    
+    
 }
 .footerlink:hover {
-    color: white !important;
+    color: var(--tert) !important;
 
 }
