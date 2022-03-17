@@ -61,3 +61,18 @@
     -webkit-animation: pulse 1.5s infinite;
 
 }
+
+.btn-submit{
+    background-color: var(--prim)!important;
+    color: var(--second)!important;
+
+}
+
+.btn-submit:hover{
+    background-color: var(--second)!important;
+    color: var(--prim)!important;
+    border-color: var(--prim);
+    background: var(--second)!important;
+    -webkit-animation: pulse 2.5s infinite
+
+}

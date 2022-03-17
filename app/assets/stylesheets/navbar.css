@@ -7,12 +7,12 @@
 }
 
 .btn-nav {
-    color: var(--second);
+    color: var(--second)!important;
     border-color: var(--second)!important;
 }
 
 .btn-nav:hover {
-    color: var(--prim);
+    color: var(--prim)!important;
     background-color: var(--second) !important;
 
 
@@ -22,6 +22,11 @@
     color: var(--prim)!important;
     border-color: var(--second) !important;
     background-color: var(--second) !important;
+}
+.btn-signup:hover {
+    color: var(--second)!important;
+    border-color: var(--prim) !important;
+    background-color: var(--prim) !important;
 }
 
 input[type="search"], input[type="search"]::selection {
