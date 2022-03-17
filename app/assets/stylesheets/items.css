@@ -14,7 +14,9 @@
 }
 
 .btn-updateitem {
+
     background-color: var(--prim)!important;
+
     border-color: turquoise!important;
     color: turquoise!important;
 }
@@ -40,3 +42,16 @@
     -webkit-animation: pulse 1.5s infinite;
 
 }
+
+.btn-confirmupdateitem{
+    background-color: var(--prim)!important ;
+    border-color: none;
+    color: var(--second)!important;
+}
+
+.btn-confirmupdateitem:hover {
+    background-color: turquoise!important;
+    border-color: turquoise!important;
+    color: var(--prim)!important;
+}
+

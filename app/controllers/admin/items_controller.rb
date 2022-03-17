@@ -39,8 +39,8 @@ module Admin
             @items = Item.find(params[:id])
             
 
-            if @items.update(post_params)
-                redirect_to item_path(item.id)
+            if @items.update(past_params)
+                redirect_to root_path
                 else
                     render :edit
                 end
@@ -57,6 +57,9 @@ module Admin
 
         def post_params
             params.require(:item).permit(:title, :description, :price, :image_url)
+        end
+        def past_params
+            params.permit(:title, :description, :price, :image_url)
         end
 
     end
