@@ -226,6 +226,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  dotenv
   dotenv-rails
   faker
   jbuilder (~> 2.5)
@@ -247,4 +248,4 @@ RUBY VERSION
    ruby 2.7.4p191
 
 BUNDLED WITH
-   2.3.6
+   2.3.7
