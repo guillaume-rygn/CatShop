@@ -37,7 +37,7 @@ Il ne vous reste plus qu'à tester l'ensemble des fonctionnalités de l'applicat
 $ rails server 
 ```
 
-Munissez-vous des identifiants administrateurs (identifiant : Adminisatator, mdp: azerty).
+Munissez-vous des identifiants administrateurs (identifiant : admin@yopmail.com, mdp: azerty).
 
 Rendez-vous ensuite sur le site en local 👉 [Catshop](http://localhost:3000/)
 Enjoy !
