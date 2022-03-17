@@ -81,3 +81,46 @@
     color: #fff!important;
     height: 40px
 }
+
+.buttons a:nth-child(3) {
+    border: 1px solid var(--second)!important;
+    color: var(--prim)!important;
+    height: 40px
+}
+
+.buttons a:nth-child(3):hover {
+    border: 1px solid var(--second) !important;
+    color: #fff!important;
+    height: 40px;
+    background-color: #E26D5C
+}
+
+#label1 {
+    font-size:x-large;
+}
+
+#label2 {
+    font-size: x-large;
+}
+
+#label3 {
+    font-size: x-large;
+}
+
+#label4 {
+    font-size: x-large;
+}
+
+#profile-btn {
+    border: 1px solid var(--prim) !important;
+    background-color: #fff!important;
+    color: var(--prim)!important;
+    height: 40px
+}
+
+#profile-btn:hover {
+    border: 1px solid var(--second) !important;
+    background-color: #E26D5C!important;
+    color: #fff!important;
+    height: 40px
+}
