@@ -10,9 +10,15 @@ class User < ApplicationRecord
   #should we add email confirmation and a password confirmation?
 
   after_create :cartcreate
+  after_create :welcome_send
+
 
   def cartcreate
     Cart.create(user_id: self.id)
   end
-  
+
+  def welcome_send
+UserMailer.welcome_email(self).deliver_now
+end
+
 end
