@@ -19,6 +19,7 @@
             <tr>
                 <th scope="col"></th>
                 <th scope="col">Creation date</th>
+                <th scope="col">Email</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Open</th>
@@ -30,6 +31,7 @@
             <tr>
                 <td></td>
                 <td><%= order.created_at%></td>
+                <td><%= order.user.email%></td>
                 <td><%= order.user.first_name%></td>
                 <td><%= order.user.last_name%></td>
                 <td> <a href="<%=admin_order_path(order.id)%>"><img src="https://images-ext-2.discordapp.net/external/94rzocTAfqXhaCIrBh9h4_xFUtl1PwM-fGi1oBe-ZNs/https/upload.wikimedia.org/wikipedia/commons/thumb/c/cf/OOjs_UI_icon_eye.svg/1200px-OOjs_UI_icon_eye.svg.png?width=872&height=872" width="20" height="20"></a></td>

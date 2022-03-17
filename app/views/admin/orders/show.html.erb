@@ -1,5 +1,5 @@
 <div class="container">
-    <h3>Order n° <%= @order.id%></h3></li>
+    <h3 class="m-5">Order n° <%= @order.id%></h3></li>
 </div>
 
 
@@ -11,8 +11,12 @@
             <tr>
                 <th scope="col"></th>
                 <th scope="col">Creation date</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
+                <%if @order.user.first_name.nil?%>
+                    <th scope="col">Email</th>
+                <%else%>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                <%end%>
                 <th scope="col">Price</th>
             </tr>
             </thead>
@@ -22,8 +26,12 @@
             <tr>
                 <td></td>
                 <td><%= @order.created_at%></td>
-                <td><%= @order.user.first_name%></td>
-                <td><%= @order.user.last_name%></td>
+                <%if @order.user.first_name.nil?%>
+                    <td><%= @order.user.email%></td>
+                <%else%>
+                    <td><%= @order.user.first_name%></td>
+                    <td><%= @order.user.last_name%></td>
+                <%end%>
                 <td> <%= @order.total%></td>
 
             </tr>
