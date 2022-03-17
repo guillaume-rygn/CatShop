@@ -28,12 +28,28 @@
           </ul>
         </div>
         <div class="col-12 col-lg-2 offset-lg-1 mb-3 mt-lg-4">
-          <img src="paw.png" alt=""  width="70" height="70" >
+          <img src="https://avatars.githubusercontent.com/u/97439623?v=4" alt=""  width="70" height="70" >
         </div>
         <div class="col-12 col-lg-10 offset-lg-1 mb-3 mt-lg-4">
-          <h5>Miaouuuuuuuuuu<a href="https://www.youtube.com/watch?v=9o8qf7anq0g">u</a>uuuuu</a></h5>
+          <h5 class="miaou">Miaouuuuuuuuuu<a href="https://www.youtube.com/watch?v=9o8qf7anq0g">u</a>uuuuu</a></h5>
           
+
+<audio controls id="linkAudio">
+  <source src="miaou.mp3" type="audio/mp3">
+Your browser does not support the audio element.
+</audio>
+
+
         </div>
       </div>
     </div>
   </footer>
+
+  <script>
+      document.getElementById("linkAudio").style.display = "none";
+
+ document.querySelector("h5.miaou").addEventListener("click", function(){
+    document.getElementById("linkAudio").play();
+ })
+  
+  </script>
