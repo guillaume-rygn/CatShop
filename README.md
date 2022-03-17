@@ -11,12 +11,12 @@ Catshop <br>
 
 <!--mettre image ou gif du site final entre parenthèse-->
 
-![Catshop]()
+![Catshop](https://i.imgur.com/azgVBJh.png)
 
 ## WEB version 🌐
 <!--mettre le site final entre parenthèse-->
 
-Le site est en live ici 👉 [Catshop]()
+Le site est en live ici 👉 [Catshop](https://catshop-io.herokuapp.com/)
 
 ## Installation en local ⚙️
 
