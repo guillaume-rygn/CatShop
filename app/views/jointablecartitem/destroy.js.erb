@@ -6,12 +6,14 @@ if (document.querySelectorAll("td.number").length > 0){
   let total = 0;
   for(i=0; i < document.querySelectorAll("td.number").length; i++){
     total = total + Number(document.querySelectorAll("td.number")[i].textContent);
-    console.log(total);
   }
    document.getElementById("total").textContent = total;
 }else{
   total = 0;
   document.getElementById("total").textContent = total;
+  document.getElementById("container").innerHTML = "";
+  document.getElementById("container").insertAdjacentHTML("afterbegin","<%= j render 'empty'%>");
+
 
 }
 

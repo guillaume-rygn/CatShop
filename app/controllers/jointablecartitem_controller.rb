@@ -13,13 +13,7 @@ class JointablecartitemController < ApplicationController
   end
 
   def update
-    @cartitem = JoinTableCartItem.find(params[:id])
- 
-    if @cartitem.update(cartitem_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
+    updatequantity()
   end
 
   def destroy
@@ -80,8 +74,14 @@ class JointablecartitemController < ApplicationController
     end
   end
 
-  def cartitem_params
-    cartitem_params = params.require(:join_table_cart_items).permit(:quantity)
+  def updatequantity
+    @cartitem = JoinTableCartItem.find(params[:id])
+ 
+    if params[:quantity].to_i != 0
+      if @cartitem.update('quantity' => params[:quantity])
+        redirect_to cart_path(current_user.cart.id)
+      end
+    end
   end
 
   def total 
