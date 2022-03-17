@@ -85,3 +85,8 @@
         box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
     }
 } 
+
+#title-order-show {
+    color:var(--prim);
+    font-weight: bold;
+}

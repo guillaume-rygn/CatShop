@@ -4,7 +4,9 @@ class OrdersController < ApplicationController
 
 
   def index
-    @orders = Order.all
+
+   my_order()
+    
   end
 
   def show
@@ -118,5 +120,15 @@ class OrdersController < ApplicationController
     @cart.update(total: 0)
   end
 
+  private
+
+  def my_order
+    @orders = []
+    Order.all.each do |order|
+      if order.user_id == current_user.id
+     @orders << order
+      end
+    end
+  end
 
 end

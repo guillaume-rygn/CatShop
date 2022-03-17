@@ -1,2 +1,50 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+
+
+<div class="container">
+  <div class="header-cart">
+        <ul id="ulcart"class="d-flex flex-wrap align-items-center justify-content-center ">
+            <li class="me-3"><h3>ORDER LIST</h3></li>
+        </ul>
+    </div>
+
+<%if @orders == [] %>
+
+<div class="table tablecart text-center py-5">
+<p>Your cart is empty</p>
+</div>
+</div>
+<%else%>
+  
+
+<div class="container">
+    <table class="table tablecart">
+        <thead>
+            <tr> 
+               <th scope="col"></th>
+               <th scope="col">Creation date</th>
+               <th scope="col">Item</th>
+               <th scope="col">Price</th>
+               <th scope="col">Open</th>
+             </tr>
+            </thead>
+            <tbody>
+
+            <%@orders.each do |order| %>
+             <tr>
+                <td></td>
+                <td><%= order.created_at%></td>
+                <td><% order.items.each do |item|%>
+                    <p><%=item.title%></p>
+                    <% end %>
+                </td>
+                <td><%= order.total%></td>
+                <td> <a href="<%=order_path(order.id)%>"><img src="https://images-ext-2.discordapp.net/external/94rzocTAfqXhaCIrBh9h4_xFUtl1PwM-fGi1oBe-ZNs/https/upload.wikimedia.org/wikipedia/commons/thumb/c/cf/OOjs_UI_icon_eye.svg/1200px-OOjs_UI_icon_eye.svg.png?width=872&height=872" width="20" height="20"></a></td>
+            </tr>
+            <%end%>
+           
+            </tbody>
+            
+        </table>
+      <% end %>  
+</div>
+

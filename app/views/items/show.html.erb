@@ -11,7 +11,9 @@
                 <br/>
                <h3><%=@item.price%>€</h3> 
                <br/>
+
                <%= button_to "Add to cart", jointablecartitem_index_path, params: {item_id: @item.id, quantity: 1}, method: :post, class: "btn btn-cart"%><br>
+
                </div>
         </div>
        </div>

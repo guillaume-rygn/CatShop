@@ -21,7 +21,9 @@ end
     title: "#{Faker::Creature::Cat.name}#{t}",
     description: "Joli petit chat des montagnes au pelage soyeux et arborant de toute odeur au vent le vent demain venant !",
     price: 19.99,
+
     image_url: cat.sample,
+
     category_id: Category.all.sample.id
   );
 end
@@ -47,4 +49,3 @@ user = User.create!(
   email: "admin@yopmail.com",
   is_admin: true,
 );
-
