@@ -5,7 +5,7 @@
             <div class="card p-3 py-4">
                 <div class="text-center"> <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle"> </div>
                 <div class="text-center mt-3"> 
-                <% if @user.first_name != nil || @user.lastname != nil %>
+                <% if @user.first_name != nil || @user.last_name != nil %>
                     <h3 class="mt-2 mb-0"><%=@user.first_name%> <%=@user.last_name %></h3> 
                     <br/>
                     <% end %>
@@ -28,9 +28,9 @@
                         <li><i class="fa fa-google"></i></li>
                     </ul>
                     <div class="buttons">
-                     <a href="<%=order_path(current_user.id)%>"  class="btn btn-outline-primary px-4">My orders</a>
+                     <a href="<%=order_path(@user.id)%>"  class="btn btn-outline-primary px-4">My orders</a>
                      <a  href="<%= edit_user_registration_path %>" class="btn btn-primary px-4 ms-3">Settings</a> 
-                     <a href="<%= edit_user_path(current_user.id) %>" class="btn btn-outline-primary px-4 ms-3">Edit profile</a>
+                     <a href="<%= edit_user_path(@user.id) %>" class="btn btn-outline-primary px-4 ms-3">Edit profile</a>
 
                      </div>
                 </div>

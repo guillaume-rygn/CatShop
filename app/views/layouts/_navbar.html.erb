@@ -38,7 +38,6 @@
         <%= link_to "My cart - Empty ", root_path , class:"btn btn-nav me-2"%> <!-- un path aller à un panier vide _empty_cart.html.erb -->
         <%= link_to "My order - Empty", root_path , class:"btn btn-nav me-2"%> <!-- un path  aller à un order vide _empty_order.html.erb-->
 
-        <% elsif Cart.find_by(user_session).total != nil && Order.find_by(user_session).total == nil %>
 
         <%= link_to "My cart", root_path , class:"btn btn-nav me-2"%> <!-- un path aller à un panier vide _empty_cart.html.erb -->
         <%= link_to "My order - Empty", root_path  , class:"btn btn-nav me-2"%>

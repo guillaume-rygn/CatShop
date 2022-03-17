@@ -1,4 +1,5 @@
 #destroy all seed before db:seed
+Category.destroy_all
 User.destroy_all
 Cart.destroy_all
 Item.destroy_all
