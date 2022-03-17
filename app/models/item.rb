@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   has_many :join_table_cart_items
   has_many :carts, through: :join_table_cart_items
-
+  belongs_to :category
   has_many :join_table_item_orders
   has_many :orders, through: :join_table_item_orders
   # some title has to be here, unique
