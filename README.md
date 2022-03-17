@@ -53,6 +53,10 @@ $ rails db:seed
 Rendez-vous ensuite sur le site en local 👉 [Catshop](http://localhost:3000/)
 Enjoy !
 
+## MCD database 
+
+![MCD](https://i.imgur.com/wE7uHyP.png)
+
 ## Technologies utilisées ⚙️
 
 <p align="left">Pour ce programme les technologies suivantes ont été utilisé : <br>
