@@ -1,0 +1,35 @@
+
+<div class="container">
+    <div class="text-center row justify-content-center">
+        <div class="col-xs-3 col-sm-6 col-md-6 col-lg-6">
+          <%= form_for items, url: [:admin, items] do |f| %>
+
+                <div class="form-group">
+                  <%= f.label :title %><br />
+                  <%= f.text_field :title, autofocus: true, autocomplete: "title", class:"form-control" %>
+                </div>
+                <br>
+                <div class="form-group">
+                  <%= f.label :description %><br />
+                  <%= f.text_field :description, autofocus: true, autocomplete: "description", class:"form-control" %>
+                </div>
+                <br>
+                <div class="form-group">
+                  <%= f.label :price %><br />
+                  <%= f.text_field :price, autofocus: true, autocomplete: "price", class:"form-control" %>
+                </div>
+                <br>
+                 <div class="form-group">
+                  <%= f.label :image_url %><br />
+                  <%= f.text_field :image_url, autofocus: true, autocomplete: "image_url", class:"form-control" %>
+                </div>
+                <br>
+
+                <div class="actions">
+                  <%= f.submit "Create", class:"btn btn-signupform" %>
+                </div>
+              <% end %>
+
+        </div>
+    </div>
+</div>
