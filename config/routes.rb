@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   root to: "items#index"
-  resources :cart, only: [:show, :update]
+  resources :cart, only: [:create, :show, :update]
   resources :jointablecartitem, only: [:create, :update, :destroy]
   resources :charges
   resources :user, only: [:show, :edit, :update]

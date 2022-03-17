@@ -3,19 +3,8 @@ class JointablecartitemController < ApplicationController
   before_action :authenticate_user
 
     def create
-    @cartitem = JoinTableCartItem.new(
-      'item_id' => params[:item_id],
-      'quantity' => params[:quantity],
-      'cart_id' => Cart.find_by(user_id: current_user.id).id
-    )
-
-    total()
-
-    if @cartitem.save
-      flash[:notice] = "Item Add"
-    else
-      flash[:notice] = "please try again"
-    end
+      
+    addorupdateitem()
   
     respond_to do |format|
         format.html { redirect_to cart_path(Cart.find_by(user_id: current_user.id).id) }
@@ -36,10 +25,53 @@ class JointablecartitemController < ApplicationController
   def destroy
     @cart = JoinTableCartItem.find(params[:id])
     @cart.destroy
-    redirect_to cart_path(params[:cart_id])
+    
+    respond_to do |format|
+      format.html { redirect_to cart_path(params[:cart_id]) }
+      format.js { }
+    end
+    
   end
 
   private
+
+  def addorupdateitem
+    @cart = Cart.find_by(user_id: current_user.id)
+    i = 0
+    a = ""
+    @cart.join_table_cart_items.each do |item|
+      if item.item_id.to_i == params[:item_id].to_i
+        i = params[:quantity]
+        a = item
+        puts "$"*650
+        puts i
+      end
+    end
+
+    puts "$"*650
+    puts i
+    if i == 0
+      @cartitem = JoinTableCartItem.new(
+        'item_id' => params[:item_id],
+        'quantity' => params[:quantity],
+        'cart_id' => Cart.find_by(user_id: current_user.id).id
+      )
+  
+      total()
+  
+      if @cartitem.save
+        flash[:notice] = "Item Add"
+      else
+        flash[:notice] = "please try again"
+      end
+    else
+      puts @cartitem
+      b = a.quantity + params[:quantity].to_i
+      a.update(quantity: b)
+      total()
+    end
+
+  end
 
   def authenticate_user
     unless current_user
