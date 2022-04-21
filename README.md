@@ -12,6 +12,17 @@ Catshop <br>
 <!--mettre image ou gif du site final entre parenthèse-->
 
 ![Catshop](https://i.imgur.com/azgVBJh.png)
+## Mon rôle sur le projet
+- Création de la BDD sous PostgreSQL
+- Définition des Models, relations et validates correspondant aux tables
+- Mise en place du parcours client Back-end pour récupérer le contenu d'une commande et payer
+- Mise en place de Stripe via l'API Stripe
+- Création d'un systeme de catégorie pour la page d'accueil
+- Définition des Controllers
+- Amélioration de certaines Views
+- Mise en place d'AJAX pour améliorer l'expérience utilisateur
+
+Lien vers le repository original pour voir les pull request et le travail en équipe 👉 [Github](https://github.com/Bastien-Arlot/CatShop)
 
 ## WEB version 🌐
 <!--mettre le site final entre parenthèse-->
